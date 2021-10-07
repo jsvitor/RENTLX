@@ -1,12 +1,11 @@
 // classe responsável por entrar em contato com o banco de dados e fazer manipulações
 import { Category } from "../model/Category";
+import {
+  ICategoriesRepository,
+  ICreateCategoryDTO,
+} from "./ICategoriesRepository";
 
-interface ICreateCategoryDTO {
-  name: string;
-  description: string;
-}
-
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
   constructor() {
