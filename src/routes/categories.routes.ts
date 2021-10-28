@@ -2,6 +2,7 @@ import { Router } from "express";
 import multer from "multer";
 
 import { createCategoryController } from "../modules/cars/useCases/createCategory/index";
+import { importCategoriesController } from "../modules/cars/useCases/importCategories";
 import { listCategoriesController } from "../modules/cars/useCases/listCategories/index";
 
 const categoriesRoutes = Router();
@@ -20,9 +21,7 @@ categoriesRoutes.post(
   "/imports",
   upload.single("file"),
   (request, response) => {
-    const { file } = request;
-    console.log(file);
-    return response.send();
+    return importCategoriesController.handle(request, response);
   }
 );
 
